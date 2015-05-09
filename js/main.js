@@ -1,10 +1,12 @@
-$iterate = $( '#iterateEffects' );
+$iterate = $('#iterateEffects');
 $iterate.on('click', function() {
-	PageTransitions.nextPage();
+    PageTransitions.nextPage();
 })
 
-$login = $('#login');
+$login = $('#loginBtn');
 $loginPage = $('#loginPage');
-$login.on('click', function() {
-	PageTransitions.nextPage($loginPage);
+$login.on('click', function(event) {
+    event.preventDefault();
+    $('.wrapper').addClass('form-success');
+    PageTransitions.nextPage($loginPage);
 })
