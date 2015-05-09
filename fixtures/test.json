@@ -7,5 +7,23 @@
       "account": "t103598011@ntut.edu.tw",
       "password": "90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809"
     }
+  },
+  {
+    "model": "core.UserModel",
+    "pk": 2,
+    "fields": {
+      "user_id": 2667575038812783668,
+      "account": "t103598010@ntut.edu.tw",
+      "password": "90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809"
+    }
+  },
+  {
+    "model": "core.UserModel",
+    "pk": 3,
+    "fields": {
+      "user_id": 7646829896382811124,
+      "account": "t103598003@ntut.edu.tw",
+      "password": "90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809"
+    }
   }
 ]
