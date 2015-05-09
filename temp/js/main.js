@@ -3,10 +3,15 @@ $iterate.on('click', function() {
     PageTransitions.nextPage();
 })
 
-$login = $('#loginBtn');
+$loginBtn = $('#loginBtn');
 $loginPage = $('#loginPage');
-$login.on('click', function(event) {
+$loginBtn.on('click', function(event) {
     event.preventDefault();
     $('.wrapper').addClass('form-success');
-    PageTransitions.nextPage($loginPage);
+
+    $loginBtn.addClass('loading');
+    setTimeout(function() {
+        //PageTransitions.nextPage($loginPage);
+        $loginBtn.removeClass('loading');
+    }, 3000);
 })

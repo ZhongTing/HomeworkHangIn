@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="temp/css/component.css" />
     <link rel="stylesheet" type="text/css" href="temp/css/animations.css" />
     <link rel="stylesheet" type="text/css" href="temp/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="temp/css/loading.css" />
     <script src="temp/js/modernizr.custom.js"></script>
 </head>
 
@@ -22,7 +23,14 @@
                 <div id="loginForm">
                     <input type="text" placeholder="Username">
                     <input type="password" placeholder="Password">
-                    <button id="loginBtn">Login</button>
+                    <button id="loginBtn">
+                        <div class="loading-animation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="label">Login</span>
+                    </button>
                 </div>
             </div>
             <ul class="bg-bubbles">
