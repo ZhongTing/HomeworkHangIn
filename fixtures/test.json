@@ -1,0 +1,11 @@
+[
+  {
+    "model": "core.UserModel",
+    "pk": 1,
+    "fields": {
+      "user_id": 6338857448887208891,
+      "account": "t103598011@ntut.edu.tw",
+      "password": "90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809"
+    }
+  }
+]

@@ -6,7 +6,7 @@ class UserModel(models.Model):
     access_token = models.CharField(max_length=50, default='', blank=False, unique=True)
 
     account = models.CharField(max_length=50, blank=False, unique=False)
-    password = models.CharField(max_length=50, blank=False)
+    password = models.CharField(max_length=100, blank=False)
 
     class Meta:
         db_table = "user"
