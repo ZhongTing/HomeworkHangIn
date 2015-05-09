@@ -34,7 +34,10 @@ class UserManager():
                 user_model.access_token = self._create_access_token()
                 user_model.save()
 
-            return user_model.access_token
+            return {
+                "accessToken": user_model.access_token,
+                "account": user_model.account,
+            }
 
         except UserModel.DoesNotExist:
             raise AuthorizationError()

@@ -8,8 +8,5 @@ class AuthorizationHandler():
         pass
 
     @classmethod
-    def login(cls, data):
-        account = data["account"]
-        password = data["password"]
-        access_token = cls.__user_manager.login(account, password)
-        return access_token
+    def login(cls, account, password):
+        return cls.__user_manager.login(account, password)

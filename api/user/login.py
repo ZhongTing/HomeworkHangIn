@@ -17,10 +17,10 @@ def login(request):
             "account": request.get_data("account"),
             "password": request.get_data("password"),
         }
-        access_token = AuthorizationHandler.login(data)
+        login_response = AuthorizationHandler.login(data["account"], data["password"])
 
         # action
-        return JSONResponse.output({"accessToken": access_token})
+        return JSONResponse.output(login_response)
 
     except Error as error:
         return JSONResponse.output(error)
