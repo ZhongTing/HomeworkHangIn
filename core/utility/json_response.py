@@ -8,7 +8,7 @@ class JSONResponse():
         pass
 
     @staticmethod
-    def output(result="", response_code=200):
+    def output(result="success", response_code=200):
         if type(result) is list:
             raise Exception("[JSONResponse] Result cannot be list!")
 
