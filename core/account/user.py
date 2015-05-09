@@ -4,3 +4,11 @@ class User():
 
     def __str__(self):
         return str(self._user.__dict__)
+
+    @property
+    def is_valid(self):
+        return True
+
+    @property
+    def account(self):
+        return self._user.account

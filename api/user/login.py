@@ -19,6 +19,9 @@ def login(request):
         }
         login_response = AuthorizationHandler.login(data["account"], data["password"])
 
+        print str(AuthorizationHandler.is_valid(login_response["accessToken"]))
+        print str(AuthorizationHandler.get_account(login_response["accessToken"]))
+
         # action
         return JSONResponse.output(login_response)
 
