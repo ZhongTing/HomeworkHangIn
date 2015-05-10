@@ -10,3 +10,16 @@ $loginBtn.on('click', function(event) {
         $loginBtn.removeClass('loading');
     }, 3000);
 })
+
+$('.back').each(function() {
+    $(this).on('click', function() {
+        PageTransitions.back();
+    })
+})
+
+$("*[data-nextpage]").each(function() {
+    $(this).on('click', function() {
+        $nextPage = $("#" + $(this).data('nextpage'))
+        PageTransitions.nextPage($nextPage);
+    });
+})

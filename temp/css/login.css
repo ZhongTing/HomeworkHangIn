@@ -47,37 +47,14 @@ body {
 }
 
 #login-form {
-    padding: 20px 0;
     position: relative;
     z-index: 2;
 }
 
-#login-form input {
-    appearance: none;
-    outline: 0;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 250px;
-    border-radius: 3px;
-    padding: 10px 15px;
-    margin: 0 auto 10px auto;
-    display: block;
-    text-align: center;
-    font-size: 18px;
-    color: #ffffff;
-    -webkit-transition-duration: 0.25s;
-    transition-duration: 0.25s;
-    font-weight: 300;
-}
-
-#login-form input:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
 #login-form input:focus {
     background-color: #ffffff;
-    width: 300px;
     color: #53e3a6;
+    width: 300px;
 }
 
 #login-form button {
