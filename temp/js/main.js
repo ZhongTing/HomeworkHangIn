@@ -1,17 +1,12 @@
-$iterate = $('#iterateEffects');
-$iterate.on('click', function() {
-    PageTransitions.nextPage();
-})
-
-$loginBtn = $('#loginBtn');
-$loginPage = $('#loginPage');
+$loginBtn = $('#login-btn');
+$taMainPage = $('#ta-main-page');
 $loginBtn.on('click', function(event) {
     event.preventDefault();
     $('.wrapper').addClass('form-success');
-
+    PageTransitions.nextPage($taMainPage);
     $loginBtn.addClass('loading');
     setTimeout(function() {
-        //PageTransitions.nextPage($loginPage);
+        // PageTransitions.nextPage($taMainPage);
         $loginBtn.removeClass('loading');
     }, 3000);
 })

@@ -53,8 +53,10 @@ var PageTransitions = (function() {
 
         if ($nextPage) {
             pageIndex = $pages.index($nextPage);
+            if (pageIndex == -1) return;
             options.showPage = pageIndex
         }
+
         nextPageByOption(options);
     }
 

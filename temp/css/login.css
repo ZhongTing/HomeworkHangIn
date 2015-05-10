@@ -12,7 +12,7 @@ body {
     font-weight: 300;
 }
 
-#loginForm input::-webkit-input-placeholder {
+#login-form input::-webkit-input-placeholder {
     /* WebKit browsers */
     
     font-family: 'Source Sans Pro', sans-serif;
@@ -20,7 +20,7 @@ body {
     font-weight: 300;
 }
 
-#loginForm input:-moz-placeholder {
+#login-form input:-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     
     font-family: 'Source Sans Pro', sans-serif;
@@ -29,7 +29,7 @@ body {
     font-weight: 300;
 }
 
-#loginForm input::-moz-placeholder {
+#login-form input::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     
     font-family: 'Source Sans Pro', sans-serif;
@@ -38,7 +38,7 @@ body {
     font-weight: 300;
 }
 
-#loginForm input:-ms-input-placeholder {
+#login-form input:-ms-input-placeholder {
     /* Internet Explorer 10+ */
     
     font-family: 'Source Sans Pro', sans-serif;
@@ -46,35 +46,13 @@ body {
     font-weight: 300;
 }
 
-.wrapper.form-success .container h1 {
-    -webkit-transform: translateY(85px);
-    -ms-transform: translateY(85px);
-    transform: translateY(85px);
-}
-
-.container {
-    text-align: center;
-    position: absolute;
-    top: 30%;
-    width: 100%;
-}
-
-.container h1 {
-    font-size: 40px;
-    -webkit-transition-duration: 1s;
-    transition-duration: 1s;
-    -webkit-transition-timing-function: ease-in-put;
-    transition-timing-function: ease-in-put;
-    font-weight: 200;
-}
-
-#loginForm {
+#login-form {
     padding: 20px 0;
     position: relative;
     z-index: 2;
 }
 
-#loginForm input {
+#login-form input {
     appearance: none;
     outline: 0;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -92,17 +70,17 @@ body {
     font-weight: 300;
 }
 
-#loginForm input:hover {
+#login-form input:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-#loginForm input:focus {
+#login-form input:focus {
     background-color: #ffffff;
     width: 300px;
     color: #53e3a6;
 }
 
-#loginForm button {
+#login-form button {
     appearance: none;
     outline: 0;
     background-color: #ffffff;
@@ -117,7 +95,7 @@ body {
     transition-duration: 0.25s;
 }
 
-#loginForm button:hover {
+#login-form button:hover {
     background-color: #f5f7f9;
 }
 
