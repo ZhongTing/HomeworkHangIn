@@ -58,3 +58,9 @@ input[type='button'] {
     font-weight: 200;
     padding: 20px 0;
 }
+
+@media screen and (max-height: 38em) {
+    .container {
+        top: 0.5em;
+    }
+}

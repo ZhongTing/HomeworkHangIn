@@ -55,7 +55,7 @@ function initTAMainPage(homeworkList) {
 
 function initHomeworkMenu(homeworkList) {
     var html = '';
-    var count = 5;
+    var count = 4;
     if (homeworkList.length != 0) {
         for (var i = homeworkList.length - 1; i >= 0; i--) {
             var hw = homeworkList[i];
@@ -70,7 +70,7 @@ function initHomeworkMenu(homeworkList) {
     $("#homework-menu ul.dl-menu").html(html);
     $('#homework-menu').removeData('dlmenu');
     $('#homework-menu').dlmenu({
-        animationClasses: { in : 'dl-animate-in-2', out: 'dl-animate-out-2'
+        animationClasses: { in : 'dl-animate-in-4', out: 'dl-animate-out-4'
         }
     });
     $("#homework-menu li[data-hwid]").on('click', function() {
