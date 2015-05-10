@@ -8,6 +8,7 @@
     <title>Homework Hang in System</title>
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="temp/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="temp/css/dlmenu.css" />
     <link rel="stylesheet" type="text/css" href="temp/css/component.css" />
     <link rel="stylesheet" type="text/css" href="temp/css/animations.css" />
     <link rel="stylesheet" type="text/css" href="temp/css/login.css" />
@@ -32,26 +33,29 @@
                         <span class="label">Login</span>
                     </button>
                 </div>
+                <ul class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
-            <ul class="bg-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
         </div>
         <div id="ta-main-page" class="pt-page pt-page-2">
             <div class="container">
                 <h1>Welcome back, ZhongTing</h1>
                 <div>
                     <input type="button" data-nextpage="assign-new-hw-page" value="Assign New Homework">
-                    <input type="button" data-nextpage="browse-homework-page" value="List Homeworks">
+                    <div id="homework-menu" class="dl-menuwrapper">
+                        <input type="button" class="dl-trigger" value="Correct Homework" />
+                        <ul class="dl-menu"></ul>
+                    </div>
                     <input type="button" class="back" value="back">
                 </div>
             </div>
@@ -62,14 +66,17 @@
         <div id="assign-new-hw-page" class="pt-page pt-page-4">
             <div class="container">
                 <h1>Assign New Homework</h1>
-                <h2>Comming Soon</h2>
+                <h2>Comming Soon...</h2>
                 <br />
                 <input type="button" class="back" value="back">
             </div>
         </div>
-        <div id="browse-homework-page" class="pt-page pt-page-5">
+        <div id="correct-homework-page" class="pt-page pt-page-5">
             <div class="container">
-                <h1>Browse Homework</h1>
+                <h1>Correct Assignment</h1>
+                <h2 id="correct-hw-name"></h2>
+                <br />
+                <input type="button" value="download hw">
                 <input type="button" class="back" value="back">
             </div>
         </div>
@@ -79,6 +86,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="temp/js/pagetransitions.js"></script>
+    <script src="temp/js/jquery.dlmenu.js"></script>
     <script src="temp/js/main.js"></script>
 </body>
 

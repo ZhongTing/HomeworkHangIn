@@ -56,7 +56,6 @@ var PageTransitions = (function() {
             if (pageIndex == -1) return;
             options.showPage = pageIndex
         }
-
         nextPageByOption(options);
     }
 
@@ -66,7 +65,7 @@ var PageTransitions = (function() {
         var animation = (options.animation) ? options.animation : options;
 
         if (isAnimating) {
-            return false;
+            // return false;
         }
 
         var $currPage = $pages.eq(current);
