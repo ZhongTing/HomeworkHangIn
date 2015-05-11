@@ -13,7 +13,7 @@ def upload(request):
 
         # header
         user = user_manager.get_user_from_token(request.get_token())
-        if user.is_student:
+        if not user.is_student:
             raise AuthorizationError()
 
         # POST data

@@ -3,6 +3,7 @@ from core.homework.homework import Homework
 from core.models import HomeworkModel
 from core.utility.error_exceptions import NotFoundError, DuplicateError
 from django.db import IntegrityError
+from django.http import HttpResponse
 import os
 
 
@@ -35,19 +36,29 @@ class HomeworkManager():
         return self.__homework_cache[homework_id]
 
     def upload_homework(self, homework_id, user, homework_file):
-        filename = self._get_homework_filename(homework_id, user)
+        filename = self._get_homework_file_path(homework_id, user)
         save_file = open(filename, "wb")
         for chunk in homework_file:
             save_file.write(chunk)
         save_file.close()
 
     def download_homework(self, homework_id, user):
-        filename = self._get_homework_filename(homework_id, user)
-        print filename
+        file_path = self._get_homework_file_path(homework_id, user)
 
-    def _get_homework_filename(self, homework_id, user):
-        print homework_id
-        print self.__homework_cache
+        chunks = []
+        with open(file_path, "rb") as f:
+            while True:
+                chunk = f.read(8192)
+                if chunk:
+                    chunks.append(chunk)
+                else:
+                    break
+        response = HttpResponse(b''.join(chunks), content_type='application/zip')
+        response['Content-Disposition'] = 'attachment; filename="%s.zip"' % user.student_id
+
+        return response
+
+    def _get_homework_file_path(self, homework_id, user):
         if homework_id not in self.__homework_cache:
             raise NotFoundError()
 
@@ -55,14 +66,13 @@ class HomeworkManager():
         student_id = str(user.student_id)
         year = str(homework.year)
         homework_id = str(homework.homework_id)
-        filename = "%s/%s/%s/%s.zip" % (HOMEWORK_UPLOAD_FOLDER, year, homework_id, student_id)
+        file_path = "%s/%s/%s/%s.zip" % (HOMEWORK_UPLOAD_FOLDER, year, homework_id, student_id)
 
-        directory = os.path.dirname(filename)
+        directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
             os.makedirs(directory)
 
-        print filename
-        return filename
+        return file_path
 
 
 homework_manager = HomeworkManager()
