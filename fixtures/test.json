@@ -25,5 +25,14 @@
       "account": "t103598003@ntut.edu.tw",
       "password": "90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809"
     }
+  },
+  {
+    "model": "core.UserModel",
+    "pk": 4,
+    "fields": {
+      "user_id": 6845202820533572342,
+      "account": "sdtlab@gmail.com",
+      "password": "90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809"
+    }
   }
 ]
