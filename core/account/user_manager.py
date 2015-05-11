@@ -3,7 +3,7 @@ import uuid
 import sys
 
 from core.account.user import User
-from core.models import UserModel
+from core.models import UserModel, UserType
 from core.utility.error_exceptions import AuthorizationError
 
 
@@ -37,6 +37,7 @@ class UserManager():
             return {
                 "accessToken": user_model.access_token,
                 "account": user_model.account,
+                "role": UserType.labels[user_model.role],
             }
 
         except UserModel.DoesNotExist:

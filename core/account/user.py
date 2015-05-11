@@ -12,3 +12,7 @@ class User():
     @property
     def account(self):
         return self._user.account
+
+    @property
+    def role(self):
+        return self._user.role

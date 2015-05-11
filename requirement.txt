@@ -1,3 +1,4 @@
 Django==1.7.7
 djangorestframework==2.3.14
 psycopg2==2.5.3
+django-enumfield==1.2.1
