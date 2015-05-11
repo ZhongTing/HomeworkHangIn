@@ -34,6 +34,9 @@ class RequestChecker():
     def get_data(self, key, **arg):
         return self._get(self._request.DATA, key, arg)
 
+    def get_file(self, key, **arg):
+        return self._get(self._request.FILES, key, arg)
+
     def get_param(self, key, **arg):
         return self._get(self._request.QUERY_PARAMS, key, arg)
 

@@ -35,17 +35,19 @@ class HomeworkManager():
         return self.__homework_cache[homework_id]
 
     def upload_homework(self, homework_id, user, homework_file):
-        filename = self._get_homework_filename(self.__homework_cache[homework_id], user)
+        filename = self._get_homework_filename(homework_id, user)
         save_file = open(filename, "wb")
         for chunk in homework_file:
             save_file.write(chunk)
         save_file.close()
 
     def download_homework(self, homework_id, user):
-        filename = self._get_homework_filename(self.__homework_cache[homework_id], user)
+        filename = self._get_homework_filename(homework_id, user)
         print filename
 
     def _get_homework_filename(self, homework_id, user):
+        print homework_id
+        print self.__homework_cache
         if homework_id not in self.__homework_cache:
             raise NotFoundError()
 

@@ -1,4 +1,6 @@
-from core.utility.error_exceptions import Error
+from core.account.user_manager import user_manager
+from core.homework.homework_manager import homework_manager
+from core.utility.error_exceptions import Error, AuthorizationError
 from core.utility.json_response import JSONResponse
 from core.utility.request_checker import RequestChecker
 from rest_framework.decorators import api_view
@@ -10,13 +12,17 @@ def upload(request):
         request = RequestChecker(request)
 
         # header
+        user = user_manager.get_user_from_token(request.get_token())
+        if user.is_student:
+            raise AuthorizationError()
 
         # POST data
         data = {
-            "year": request.get_data("account"),
-            "homework_name": request.get_data("name"),
-            "total_score": request.get_data("totalScore"),
+            "homework_id": int(request.get_data("homeworkId")),
+            "file": request.get_file("file"),
         }
+
+        homework_manager.upload_homework(data["homework_id"], user, data["file"])
 
         # action
         return JSONResponse.output()
