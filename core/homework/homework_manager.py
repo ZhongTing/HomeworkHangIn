@@ -1,7 +1,7 @@
 from app.settings import HOMEWORK_UPLOAD_FOLDER
 from core.homework.homework import Homework
 from core.models import HomeworkModel
-from core.utility.error_exceptions import NotFoundError, DuplicateError
+from core.utility.error_exceptions import NotFoundError, DuplicateError, ParameterError
 from django.db import IntegrityError
 from django.http import HttpResponse
 import os
@@ -44,6 +44,8 @@ class HomeworkManager():
 
     def download_homework(self, homework_id, user):
         file_path = self._get_homework_file_path(homework_id, user)
+        if not os.path.isfile(file_path):
+            raise NotFoundError()
 
         chunks = []
         with open(file_path, "rb") as f:
@@ -60,7 +62,7 @@ class HomeworkManager():
 
     def _get_homework_file_path(self, homework_id, user):
         if homework_id not in self.__homework_cache:
-            raise NotFoundError()
+            raise ParameterError()
 
         homework = self.__homework_cache[homework_id]
         student_id = str(user.student_id)
