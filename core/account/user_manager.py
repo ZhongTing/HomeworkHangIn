@@ -54,3 +54,5 @@ class UserManager():
     @staticmethod
     def _encrypt_password(password):
         return hashlib.sha224(password).hexdigest()
+
+user_manager = UserManager()

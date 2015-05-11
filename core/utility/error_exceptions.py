@@ -34,3 +34,13 @@ class SerializerError(Error):
         if not DEBUG:
             serializer_errors = "serializer error!"
         super(SerializerError, self).__init__(serializer_errors, status.HTTP_417_EXPECTATION_FAILED)
+
+
+class NotFoundError(Error):
+    def __init__(self):
+        super(NotFoundError, self).__init__("not found error!", status.HTTP_404_NOT_FOUND)
+
+
+class DuplicateError(Error):
+    def __init__(self):
+        super(DuplicateError, self).__init__("duplicate error!", status.HTTP_409_CONFLICT)

@@ -1,12 +1,11 @@
-from core.account.user_manager import user_manager
 from core.utility.error_exceptions import Error
 from core.utility.json_response import JSONResponse
 from core.utility.request_checker import RequestChecker
 from rest_framework.decorators import api_view
 
 
-@api_view(['POST'])
-def login(request):
+@api_view(["POST"])
+def download(request):
     try:
         request = RequestChecker(request)
 
@@ -14,13 +13,13 @@ def login(request):
 
         # POST data
         data = {
-            "account": request.get_data("account"),
-            "password": request.get_data("password"),
+            "year": request.get_data("account"),
+            "homework_name": request.get_data("name"),
+            "total_score": request.get_data("totalScore"),
         }
-        login_response = user_manager.login(data["account"], data["password"])
 
         # action
-        return JSONResponse.output(login_response)
+        return JSONResponse.output()
 
     except Error as error:
         return JSONResponse.output(error)

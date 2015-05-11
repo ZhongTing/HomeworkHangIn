@@ -26,7 +26,6 @@ class UserModel(models.Model):
 
 
 class HomeworkModel(models.Model):
-    homework_id = models.BigIntegerField(unique=True, blank=False, null=False, primary_key=True)
     year = models.IntegerField(blank=False, null=False)
     name = models.CharField(max_length=50, blank=False, null=False, unique=True)
     total_score = models.IntegerField(blank=False, null=False)
