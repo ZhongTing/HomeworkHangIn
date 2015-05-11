@@ -1,4 +1,5 @@
 from app.settings import HOMEWORK_UPLOAD_FOLDER
+from core.homework.homework import Homework
 from core.models import HomeworkModel
 from core.utility.error_exceptions import NotFoundError, DuplicateError
 from django.db import IntegrityError
@@ -8,6 +9,9 @@ import os
 class HomeworkManager():
     def __init__(self):
         self.__homework_cache = {}
+        homework_model_list = HomeworkModel.objects.all()
+        for homework_model in homework_model_list:
+            self.__homework_cache[homework_model.pk] = Homework(homework_model)
 
     @staticmethod
     def create_homework(data):
@@ -18,8 +22,12 @@ class HomeworkManager():
 
     def list_homework(self):
         homework_list = list()
-        for key, value in self.__homework_cache:
-            homework_list.append(value)
+        for key, value in self.__homework_cache.iteritems():
+            homework_list.append({
+                "id": value.homework_id,
+                "name": value.name,
+                "year": value.year,
+            })
 
         return homework_list
 

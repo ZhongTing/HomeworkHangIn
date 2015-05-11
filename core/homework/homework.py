@@ -10,3 +10,7 @@ class Homework():
     def year(self):
         return self.__model.year
 
+    @property
+    def name(self):
+        return self.__model.name
+
