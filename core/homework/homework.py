@@ -14,3 +14,7 @@ class Homework():
     def name(self):
         return self.__model.name
 
+    @property
+    def total_score(self):
+        return self.__model.total_score
+

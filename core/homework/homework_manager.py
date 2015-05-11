@@ -14,10 +14,10 @@ class HomeworkManager():
         for homework_model in homework_model_list:
             self.__homework_cache[homework_model.pk] = Homework(homework_model)
 
-    @staticmethod
-    def create_homework(data):
+    def create_homework(self, data):
         try:
-            HomeworkModel.objects.create(**data)
+            homework_model = HomeworkModel.objects.create(**data)
+            self.__homework_cache[homework_model.pk] = Homework(homework_model)
         except IntegrityError:
             raise DuplicateError()
 
