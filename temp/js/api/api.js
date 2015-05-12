@@ -7,6 +7,9 @@ var API = new (function () {
         $.ajax({
             type: type,
             url: api.serverURL + action,
+            cache: false,
+            contentType: false,
+            processData: false,
             beforeSend: function (request) {
                 if (needAccessToken)
                     request.setRequestHeader("Authorization", api.accessToken);
