@@ -17,6 +17,9 @@ html {
 }
 
 body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    font-weight: 300;
     overflow: hidden;
 }
 
@@ -57,6 +60,88 @@ input[type='button'] {
     font-size: 40px;
     font-weight: 200;
     padding: 20px 0;
+}
+
+.form input::-webkit-input-placeholder {
+    /* WebKit browsers */
+    
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.form input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 300;
+}
+
+.form input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 300;
+}
+
+.form input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.form {
+    position: relative;
+    z-index: 2;
+}
+
+.form input:focus {
+    background-color: #ffffff;
+    width: 300px;
+}
+
+.form button {
+    appearance: none;
+    outline: 0;
+    background-color: #ffffff;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+}
+
+#login-form button {
+    color: #53e3a6;
+}
+
+.form button:hover {
+    background-color: #f5f7f9;
+}
+
+#login-form input:focus {
+    color: #53e3a6;
+}
+
+#assign-hw-form button {
+    color: #fdc162;
+}
+
+#assign-hw-form button:hover {
+    /*background-color: #fdc162;*/
+}
+
+#assign-hw-form input:focus {
+    color: #fdc162;
 }
 
 @media screen and (max-height: 38em) {

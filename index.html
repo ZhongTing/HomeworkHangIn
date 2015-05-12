@@ -24,9 +24,9 @@
         <div id="login-page" class="pt-page pt-page-1">
             <div class="container">
                 <h1>Welcome</h1>
-                <div id="login-form">
-                    <input type="text" placeholder="Username">
-                    <input type="password" placeholder="Password">
+                <div id="login-form" class="form">
+                    <input id="account" type="text" placeholder="Username">
+                    <input id="password" type="password" placeholder="Password">
                     <button id="login-btn">
                         <div class="loading-animation">
                             <span></span>
@@ -79,9 +79,20 @@
         <div id="assign-new-hw-page" class="pt-page pt-page-4">
             <div class="container">
                 <h1>Assign New Homework</h1>
-                <h2>Comming Soon...</h2>
-                <br />
-                <input type="button" class="back" value="back">
+                <div id="assign-hw-form" class="form">
+                    <input id="assign-hw-year" type="text" placeholder="Year">
+                    <input id="assign-hw-name" type="text" placeholder="Name">
+                    <input id="assign-hw-score" type="text" placeholder="Total Score">
+                    <button id="assign-btn">
+                        <div class="loading-animation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="label">Assign</span>
+                    </button>
+                    <input type="button" class="back" value="back">
+                </div>
             </div>
         </div>
         <div id="correct-homework-page" class="pt-page pt-page-5">
