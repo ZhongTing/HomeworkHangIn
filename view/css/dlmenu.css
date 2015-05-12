@@ -946,11 +946,3 @@ All this is done for any sub-level being entered.
 .no-js .dl-menuwrapper li > a:not(:only-child):after {
     content: '';
 }
-
-.pt-page-2 .dl-menuwrapper ul {
-    background: #3087E8;
-}
-
-.pt-page-2 .dl-menuwrapper ul a {
-    /*color: #7bb7fa;*/
-}

@@ -115,17 +115,25 @@ button {
     z-index: 2;
 }
 
-.form input:focus {
+.form input:not(.back):focus {
     background-color: #ffffff;
     width: 300px;
+}
+
+.form button:hover {
+    background-color: #f5f7f9;
 }
 
 #login-form button {
     color: #53e3a6;
 }
 
-.form button:hover {
-    background-color: #f5f7f9;
+.pt-page-2 .dl-menuwrapper ul {
+    background: #3087E8;
+}
+
+.pt-page-3 .dl-menuwrapper ul {
+    background: #5F44C1;
 }
 
 #login-form input:focus {
