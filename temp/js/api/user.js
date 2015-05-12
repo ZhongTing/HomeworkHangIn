@@ -1,9 +1,9 @@
 function UserAPI(api) {
     this.login = function (account, password, callback) {
-        var data = {
-            account: account,
-            password: password
-        };
+        var data = new FormData();
+        data.append("account", account);
+        data.append("password", password);
+
         api.request("POST", "api/user/login", data, false, function (success, data) {
             if (success) {
                 api.accessToken = data.accessToken;
@@ -13,7 +13,7 @@ function UserAPI(api) {
         });
     };
 
-    return{
+    return {
         login: this.login
     }
 }
