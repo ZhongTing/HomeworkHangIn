@@ -17,5 +17,9 @@ urlpatterns += patterns(
 
 urlpatterns += patterns(
     '',
-    url(r'^HomeworkHangIn/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT})
+    url(r'^HomeworkHangIn/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    url(r'^HomeworkHangIn$', 'django.views.static.serve', {
+        'document_root': settings.STATIC_ROOT,
+        'path': 'index.html'
+    })
 )
