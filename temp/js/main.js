@@ -1,5 +1,5 @@
-systemSetting = {
-    offlineDemo: false,
+var systemSetting = {
+    offlineDemo: true,
     quicklogin: true
 }
 
@@ -9,22 +9,33 @@ function isOfflineDemo() {
 
 function init() {
     $taMainPage = $('#ta-main-page');
+    $studentMainPage = $('#student-main-page');
+    $correctHwPage = $("#correct-homework-page");
+    $uploadHwPage = $("#upload-homework-page");
+
     if (isOfflineDemo) {
         initMockData();
     }
     initLoginPage();
-    api.userlogin("t103598011@ntut.edu.tw", "test", function(success, data) {
-        if (success) {
-            //alert("hello ~ " + data["account"]);
-            api.listHomework();
-        } else {
-            alert("account or password error!!");
-        }
-    });
+    // api.userlogin("t103598011@ntut.edu.tw", "test", function(success, data) {
+    //     if (success) {
+    //         //alert("hello ~ " + data["account"]);
+    //         api.listHomework();
+    //     } else {
+    //         alert("account or password error!!");
+    //     }
+    // });
+
 }
 
 function initMockData() {
-    var homeworkList = [{
+    mockTa = {
+        role: "ta"
+    }
+    mockStudent = {
+        role: "Student"
+    }
+    var mockHwList = [{
         id: 1,
         name: 'homework1'
     }, {
@@ -46,20 +57,26 @@ function initMockData() {
         id: 7,
         name: 'homework7'
     }];
-    // homeworkList = [];
-    initHomeworkMenu(homeworkList);
+    initHomeworkMenu(mockHwList);
 }
 
 function initLoginPage() {
     $loginBtn = $('#login-btn');
     $loginBtn.on('click', function(event) {
         event.preventDefault();
+        var account = $("#account").val();
+        var password = $("#password").val();
         if (isOfflineDemo()) {
+            if (account === "ta") {
+                currentUser.init(mockTa);
+            } else {
+                currentUser.init(mockStudent);
+            }
             if (systemSetting.quicklogin) {
-                turnToTAPage();
+                turnToMainPage();
             } else {
                 setTimeout(function() {
-                    turnToTAPage();
+                    turnToMainPage();
                 }, 2000);
             }
         } else {
@@ -68,16 +85,13 @@ function initLoginPage() {
                 $loginBtn.removeClass('loading');
                 if (success) {
                     //alert("hello ~ " + data["account"]);
+                    currentUser.init(data);
                     api.listHomework(function(success, data) {
                         if (success) {
                             initHomeworkMenu(data.list)
                         }
                     });
-                    if (data.role === "Student") {
-                        turnToStudentPage();
-                    } else {
-                        turnToTAPage();
-                    }
+                    turnToMainPage();
                 } else {
                     alert("account or password error!!");
                 }
@@ -86,8 +100,16 @@ function initLoginPage() {
     })
 }
 
+function turnToMainPage() {
+    if (currentUser.isTa()) {
+        turnToTAPage();
+    } else {
+        turnToStudentPage();
+    }
+}
+
 function turnToStudentPage() {
-    PageTransitions.nextPage($taMainPage);
+    PageTransitions.nextPage($studentMainPage);
     initTAMainPage();
 }
 
@@ -97,9 +119,14 @@ function turnToTAPage() {
 }
 
 function turnToCorrectHomeworkPage(hwid) {
-    PageTransitions.nextPage($("#correct-homework-page"));
+    PageTransitions.nextPage($correctHwPage);
     initCorrectHwPage(hwid);
 }
+
+function turnToUploadHomeworkPage(hwid) {
+    PageTransitions.nextPage($uploadHwPage);
+    initUploadHwPage(hwid);
+};
 
 function initTAMainPage() {
 
@@ -119,19 +146,27 @@ function initHomeworkMenu(homeworkList) {
     } else {
         html = '<li><a href="#">homework list empty</a></li>';
     }
-    $("#homework-menu ul.dl-menu").html(html);
-    $('#homework-menu').removeData('dlmenu');
-    $('#homework-menu').dlmenu({
+    $(".homework-menu ul.dl-menu").html(html);
+    $('.homework-menu').removeData('dlmenu');
+    $('.homework-menu').dlmenu({
         animationClasses: { in : 'dl-animate-in-4', out: 'dl-animate-out-4'
         }
     });
-    $("#homework-menu li[data-hwid]").on('click', function() {
-        turnToCorrectHomeworkPage(this.dataset['hwid']);
+    $(".homework-menu li[data-hwid]").on('click', function() {
+        if (currentUser.isTa()) {
+            turnToCorrectHomeworkPage(this.dataset['hwid']);
+        } else {
+            turnToUploadHomeworkPage(this.dataset['hwid']);
+        }
     })
 }
 
 function initCorrectHwPage(hwid) {
     $("#correct-hw-name").text(hwid);
+}
+
+function initUploadHwPage(hwid) {
+    $("#upload-hw-name").text(hwid);
 }
 
 $('.back').each(function() {

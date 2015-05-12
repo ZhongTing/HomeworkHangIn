@@ -53,7 +53,7 @@
                 <h1>Welcome back, ZhongTing</h1>
                 <div>
                     <input type="button" data-nextpage="assign-new-hw-page" value="Assign New Homework">
-                    <div id="homework-menu" class="dl-menuwrapper">
+                    <div class="dl-menuwrapper homework-menu">
                         <input type="button" class="dl-trigger" value="Correct Homework" />
                         <ul class="dl-menu"></ul>
                     </div>
@@ -62,7 +62,17 @@
             </div>
         </div>
         <div id="student-main-page" class="pt-page pt-page-3">
-            <h1><span>A collection of</span><strong>Page</strong> Transitions</h1>
+            <div class="container">
+                <h1>Welcome back, ZhongTing</h1>
+                <div>
+                    <div class="dl-menuwrapper homework-menu">
+                        <input type="button" class="dl-trigger" value="Upload Homework" />
+                        <ul class="dl-menu"></ul>
+                    </div>
+                    <input type="button" data-nextpage="view-grade-page" value="View Grade">
+                    <input type="button" class="back" value="back">
+                </div>
+            </div>
         </div>
         <div id="assign-new-hw-page" class="pt-page pt-page-4">
             <div class="container">
@@ -74,10 +84,27 @@
         </div>
         <div id="correct-homework-page" class="pt-page pt-page-5">
             <div class="container">
-                <h1>Correct Assignment</h1>
+                <h1>Correct Homework</h1>
                 <h2 id="correct-hw-name"></h2>
                 <br />
-                <input type="button" value="download hw">
+                <input type="button" value="Download HW">
+                <input type="button" class="back" value="back">
+            </div>
+        </div>
+        <div id="upload-homework-page" class="pt-page pt-page-6">
+            <div class="container">
+                <h1>Upload Homework</h1>
+                <h2 id="upload-hw-name"></h2>
+                <br />
+                <input type="button" value="Upload HW">
+                <input type="button" class="back" value="back">
+            </div>
+        </div>
+        <div id="view-grade-page" class="pt-page pt-page-4">
+            <div class="container">
+                <h1>View Grades</h1>
+                <h2>Comming Soon...</h2>
+                <br />
                 <input type="button" class="back" value="back">
             </div>
         </div>
@@ -88,6 +115,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="temp/js/pagetransitions.js"></script>
     <script src="temp/js/jquery.dlmenu.js"></script>
+    <script src="temp/js/user.js"></script>
     <script src="temp/js/main.js"></script>
 </body>
 

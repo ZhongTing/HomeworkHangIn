@@ -45,6 +45,7 @@ body {
     z-index: 999;
 }
 /* Text Styles, Colors, Backgrounds */
+/*http://color.hailpixel.com/#50A3A2,7BB7FA,8A85D6,FDC162,FD6A62,F68DBB,*/
 
 .pt-page-1 {
     background: #50a3a2;
@@ -57,7 +58,7 @@ body {
 }
 
 .pt-page-3 {
-    background: #60d7a9;
+    background: #8A85D6;
 }
 
 .pt-page-4 {

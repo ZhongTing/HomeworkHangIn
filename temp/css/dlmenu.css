@@ -19,10 +19,6 @@
     perspective-origin: 50% 200%;
 }
 
-.dl-menuwrapper:first-child {
-    margin-right: 100px;
-}
-
 .dl-menuwrapper button {
     background: #ccc;
     border: none;
