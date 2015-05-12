@@ -92,7 +92,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/temp/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'temp')
+STATIC_URL = '/view/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'view')
 
 HOMEWORK_UPLOAD_FOLDER = BASE_DIR + '/homework'

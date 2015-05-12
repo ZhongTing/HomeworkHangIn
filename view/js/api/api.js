@@ -1,6 +1,6 @@
 var API = new (function () {
     var api = this;
-    this.serverURL = "http://140.124.181.195:9000/"
+    this.serverURL = "http://140.124.181.195:9000/HomeworkHangIn/";
     this.accessToken = "";
 
     this.request = function (type, action, data, needAccessToken, callback) {
