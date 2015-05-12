@@ -1,4 +1,4 @@
-var currentUser = (function() {
+var currentUser = (function () {
 
     var account, role, token;
 
