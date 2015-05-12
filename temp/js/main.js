@@ -1,15 +1,24 @@
 function init() {
     $taMainPage = $('#ta-main-page');
     initLoginPage();
+    api.userlogin("t103598011@ntut.edu.tw", "test", function (success, data) {
+        if (success) {
+            //alert("hello ~ " + data["account"]);
+            api.listHomework();
+        }
+        else {
+            alert("account or password error!!");
+        }
+    });
 }
 
 function initLoginPage() {
     $loginBtn = $('#login-btn');
-    $loginBtn.on('click', function(event) {
+    $loginBtn.on('click', function (event) {
         event.preventDefault();
         turnInTAPage();
         $loginBtn.addClass('loading');
-        setTimeout(function() {
+        setTimeout(function () {
             // turnInTAPage();
             $loginBtn.removeClass('loading');
         }, 3000);
@@ -70,10 +79,11 @@ function initHomeworkMenu(homeworkList) {
     $("#homework-menu ul.dl-menu").html(html);
     $('#homework-menu').removeData('dlmenu');
     $('#homework-menu').dlmenu({
-        animationClasses: { in : 'dl-animate-in-4', out: 'dl-animate-out-4'
+        animationClasses: {
+            in: 'dl-animate-in-4', out: 'dl-animate-out-4'
         }
     });
-    $("#homework-menu li[data-hwid]").on('click', function() {
+    $("#homework-menu li[data-hwid]").on('click', function () {
         turnToCorrectHomeworkPage(this.dataset['hwid']);
     })
 }
@@ -82,14 +92,14 @@ function initCorrectHwPage(hwid) {
     $("#correct-hw-name").text(hwid);
 }
 
-$('.back').each(function() {
-    $(this).on('click', function() {
+$('.back').each(function () {
+    $(this).on('click', function () {
         PageTransitions.back();
     })
 })
 
-$("*[data-nextpage]").each(function() {
-    $(this).on('click', function() {
+$("*[data-nextpage]").each(function () {
+    $(this).on('click', function () {
         $nextPage = $("#" + $(this).data('nextpage'))
         PageTransitions.nextPage($nextPage);
     });
