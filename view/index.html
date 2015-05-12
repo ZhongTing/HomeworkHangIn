@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework Hang in System</title>
     <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="temp/css/default.css" />
-    <link rel="stylesheet" type="text/css" href="temp/css/dlmenu.css" />
-    <link rel="stylesheet" type="text/css" href="temp/css/component.css" />
-    <link rel="stylesheet" type="text/css" href="temp/css/animations.css" />
-    <link rel="stylesheet" type="text/css" href="temp/css/login.css" />
-    <link rel="stylesheet" type="text/css" href="temp/css/loading.css" />
-    <script src="temp/js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link rel="stylesheet" type="text/css" href="./css/dlmenu.css" />
+    <link rel="stylesheet" type="text/css" href="./css/component.css" />
+    <link rel="stylesheet" type="text/css" href="./css/animations.css" />
+    <link rel="stylesheet" type="text/css" href="./css/login.css" />
+    <link rel="stylesheet" type="text/css" href="./css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="./css/costum-upload.css" />
+    <script src="./js/api/homework.js"></script>
+    <script src="./js/api/user.js"></script>
+    <script src="./js/api/api.js"></script>
+    <script src="./js/modernizr.custom.js"></script>
 </head>
 
 <body>
@@ -106,8 +110,10 @@
                 <h1>Upload Homework</h1>
                 <h2 id="upload-hw-name"></h2>
                 <br />
+                <div class="custom-file-upload">
+                    <input id="homework-file-input" type="file">
+                </div>
                 <input type="button" value="Upload HW">
-                <input id="homework-file-input" type="file">
                 <input type="button" class="back" value="back">
             </div>
         </div>
@@ -124,16 +130,15 @@
         <p>Your browser does not support CSS animations.</p>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="temp/js/pagetransitions.js"></script>
-    <script src="temp/js/jquery.dlmenu.js"></script>
-    <script src="temp/js/jquery.fileDownload.js"></script>
-
-    <script src="temp/js/api/homework.js"></script>
-    <script src="temp/js/api/user.js"></script>
-    <script src="temp/js/api/api.js"></script>
-
-    <script src="temp/js/user.js"></script>
-    <script src="temp/js/main.js"></script>
+    <script src="./js/pagetransitions.js"></script>
+    <script src="./js/jquery.dlmenu.js"></script>
+    <script src="./js/jquery.fileDownload.js"></script>
+    <script src="./js/api/homework.js"></script>
+    <script src="./js/api/user.js"></script>
+    <script src="./js/api/api.js"></script>
+    <script src="./js/user.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/costum-upload.js"></script>
 </body>
 
 </html>

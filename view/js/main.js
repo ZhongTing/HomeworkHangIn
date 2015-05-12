@@ -17,16 +17,15 @@ function init() {
         initMockData();
     }
     initLoginPage();
-    API.user.login("t103598011@ntut.edu.tw", "test", function(success, data) {
-         if (success) {
-             //alert("hello ~ " + data["account"]);
-             API.homework.list();
-             API.homework.download(1);
-         } else {
-             alert("account or password error!!");
-         }
-    });
-
+    // API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
+    //     if (success) {
+    //         //alert("hello ~ " + data["account"]);
+    //         API.homework.list();
+    //         API.homework.download(1);
+    //     } else {
+    //         alert("account or password error!!");
+    //     }
+    // });
 }
 
 function initMockData() {
@@ -82,12 +81,12 @@ function initLoginPage() {
             }
         } else {
             $loginBtn.addClass('loading');
-            api.userlogin("t103598011@ntut.edu.tw", "test", function (success, data) {
+            API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
                 $loginBtn.removeClass('loading');
                 if (success) {
                     //alert("hello ~ " + data["account"]);
                     currentUser.init(data);
-                    api.listHomework(function (success, data) {
+                    API.homework.list(function (success, data) {
                         if (success) {
                             initHomeworkMenu(data.list)
                         }
