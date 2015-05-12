@@ -1,7 +1,7 @@
 var systemSetting = {
     offlineDemo: true,
     quicklogin: true
-}
+};
 
 function isOfflineDemo() {
     return systemSetting.offlineDemo;
@@ -31,10 +31,10 @@ function init() {
 function initMockData() {
     mockTa = {
         role: "ta"
-    }
+    };
     mockStudent = {
         role: "Student"
-    }
+    };
     var mockHwList = [{
         id: 1,
         name: 'homework1'
@@ -173,13 +173,13 @@ $('.back').each(function () {
     $(this).on('click', function () {
         PageTransitions.back();
     })
-})
+});
 
 $("*[data-nextpage]").each(function () {
     $(this).on('click', function () {
-        $nextPage = $("#" + $(this).data('nextpage'))
+        $nextPage = $("#" + $(this).data('nextpage'));
         PageTransitions.nextPage($nextPage);
     });
-})
+});
 
 init();
