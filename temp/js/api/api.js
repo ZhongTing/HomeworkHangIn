@@ -1,11 +1,12 @@
-var API = (function () {
+var API = new (function () {
     var api = this;
+    this.serverURL = "http://140.124.181.195:9000/"
     this.accessToken = "";
 
     this.request = function (type, action, data, needAccessToken, callback) {
         $.ajax({
             type: type,
-            url: "http://140.124.181.195:9000/" + action,
+            url: api.serverURL + action,
             beforeSend: function (request) {
                 if (needAccessToken)
                     request.setRequestHeader("Authorization", api.accessToken);
@@ -24,11 +25,7 @@ var API = (function () {
     };
 
     return {
-        user: (UserAPI)(api),
-        homework: (HomeworkAPI)(api),
-        createHomework: this.createHomework,
-        listHomework: this.listHomework,
-        uploadHomework: this.uploadHomework,
-        downloadHomework: this.downloadHomework
+        user: new UserAPI(api),
+        homework: new HomeworkAPI(api)
     }
-})();
+});
