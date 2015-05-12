@@ -33,6 +33,15 @@ var API = new (function () {
         });
     };
 
+    this.downloadFile = function (action, data, errorCallback) {
+        $.fileDownload(api.serverURL + action, {
+            data: data,
+            failCallback: function (responseHtml, url, error) {
+                console.log(error);
+            }
+        })
+    };
+
     return {
         user: new UserAPI(api),
         homework: new HomeworkAPI(api)

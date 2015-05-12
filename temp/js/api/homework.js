@@ -22,10 +22,11 @@ function HomeworkAPI(api) {
         api.request("POST", "api/homework/upload", data, true, callback);
     };
 
-    this.download = function (homeworkId, callback) {
-        var data = "homeworkId=1";
-
-        api.request("GET", "api/homework/download", data, true, callback);
+    this.download = function (homeworkId, errorCallback) {
+        api.downloadFile("api/homework/download", {
+            token: api.accessToken,
+            homeworkId: homeworkId
+        }, errorCallback)
     };
 
     return {
