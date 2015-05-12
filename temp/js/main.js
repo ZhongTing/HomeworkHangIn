@@ -1,33 +1,30 @@
+systemSetting = {
+    offlineDemo: false,
+    quicklogin: true
+}
+
+function isOfflineDemo() {
+    return systemSetting.offlineDemo;
+}
+
 function init() {
     $taMainPage = $('#ta-main-page');
+    if (isOfflineDemo) {
+        initMockData();
+    }
     initLoginPage();
-    api.userlogin("t103598011@ntut.edu.tw", "test", function (success, data) {
+    api.userlogin("t103598011@ntut.edu.tw", "test", function(success, data) {
         if (success) {
             //alert("hello ~ " + data["account"]);
             api.listHomework();
-        }
-        else {
+        } else {
             alert("account or password error!!");
         }
     });
 }
 
-function initLoginPage() {
-    $loginBtn = $('#login-btn');
-    $loginBtn.on('click', function (event) {
-        event.preventDefault();
-        turnInTAPage();
-        $loginBtn.addClass('loading');
-        setTimeout(function () {
-            // turnInTAPage();
-            $loginBtn.removeClass('loading');
-        }, 3000);
-    })
-}
-
-function turnInTAPage() {
-    PageTransitions.nextPage($taMainPage);
-    homeworkList = [{
+function initMockData() {
+    var homeworkList = [{
         id: 1,
         name: 'homework1'
     }, {
@@ -50,7 +47,53 @@ function turnInTAPage() {
         name: 'homework7'
     }];
     // homeworkList = [];
-    initTAMainPage(homeworkList);
+    initHomeworkMenu(homeworkList);
+}
+
+function initLoginPage() {
+    $loginBtn = $('#login-btn');
+    $loginBtn.on('click', function(event) {
+        event.preventDefault();
+        if (isOfflineDemo()) {
+            if (systemSetting.quicklogin) {
+                turnToTAPage();
+            } else {
+                setTimeout(function() {
+                    turnToTAPage();
+                }, 2000);
+            }
+        } else {
+            $loginBtn.addClass('loading');
+            api.userlogin("t103598011@ntut.edu.tw", "test", function(success, data) {
+                $loginBtn.removeClass('loading');
+                if (success) {
+                    //alert("hello ~ " + data["account"]);
+                    api.listHomework(function(success, data) {
+                        if (success) {
+                            initHomeworkMenu(data.list)
+                        }
+                    });
+                    if (data.role === "Student") {
+                        turnToStudentPage();
+                    } else {
+                        turnToTAPage();
+                    }
+                } else {
+                    alert("account or password error!!");
+                }
+            });
+        }
+    })
+}
+
+function turnToStudentPage() {
+    PageTransitions.nextPage($taMainPage);
+    initTAMainPage();
+}
+
+function turnToTAPage() {
+    PageTransitions.nextPage($taMainPage);
+    initTAMainPage();
 }
 
 function turnToCorrectHomeworkPage(hwid) {
@@ -58,8 +101,8 @@ function turnToCorrectHomeworkPage(hwid) {
     initCorrectHwPage(hwid);
 }
 
-function initTAMainPage(homeworkList) {
-    initHomeworkMenu(homeworkList);
+function initTAMainPage() {
+
 }
 
 function initHomeworkMenu(homeworkList) {
@@ -79,11 +122,10 @@ function initHomeworkMenu(homeworkList) {
     $("#homework-menu ul.dl-menu").html(html);
     $('#homework-menu').removeData('dlmenu');
     $('#homework-menu').dlmenu({
-        animationClasses: {
-            in: 'dl-animate-in-4', out: 'dl-animate-out-4'
+        animationClasses: { in : 'dl-animate-in-4', out: 'dl-animate-out-4'
         }
     });
-    $("#homework-menu li[data-hwid]").on('click', function () {
+    $("#homework-menu li[data-hwid]").on('click', function() {
         turnToCorrectHomeworkPage(this.dataset['hwid']);
     })
 }
@@ -92,14 +134,14 @@ function initCorrectHwPage(hwid) {
     $("#correct-hw-name").text(hwid);
 }
 
-$('.back').each(function () {
-    $(this).on('click', function () {
+$('.back').each(function() {
+    $(this).on('click', function() {
         PageTransitions.back();
     })
 })
 
-$("*[data-nextpage]").each(function () {
-    $(this).on('click', function () {
+$("*[data-nextpage]").each(function() {
+    $(this).on('click', function() {
         $nextPage = $("#" + $(this).data('nextpage'))
         PageTransitions.nextPage($nextPage);
     });
