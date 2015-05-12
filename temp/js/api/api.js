@@ -16,7 +16,13 @@ var API = new (function () {
             },
             data: data,
             success: function (data) {
-                console.log(action, "=>", data);
+                if (typeof(data) == "object")
+                    console.log(action, "=>", data);
+                else if (typeof(data) == "string" && data.length < 100)
+                    console.log(action, "=>", data);
+                else
+                    console.log(action, "=>", "response done");
+
                 if (callback)
                     callback(true, data);
             },

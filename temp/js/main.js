@@ -21,6 +21,7 @@ function init() {
          if (success) {
              //alert("hello ~ " + data["account"]);
              API.homework.list();
+             API.homework.download(1);
          } else {
              alert("account or password error!!");
          }
