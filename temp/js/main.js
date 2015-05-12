@@ -17,15 +17,15 @@ function init() {
         initMockData();
     }
     initLoginPage();
-    API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
-        if (success) {
-            //alert("hello ~ " + data["account"]);
-            API.homework.list();
-        } else {
-            alert("account or password error!!");
-        }
-    });
-
+    // API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
+    //     if (success) {
+    //         //alert("hello ~ " + data["account"]);
+    //         API.homework.list();
+    //         API.homework.download(1);
+    //     } else {
+    //         alert("account or password error!!");
+    //     }
+    // });
 }
 
 function initMockData() {

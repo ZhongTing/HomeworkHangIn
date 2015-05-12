@@ -9,12 +9,12 @@ function HomeworkAPI(api) {
     };
 
     this.list = function (callback) {
-        var data = new FormData();
+        var data = {};
+
         api.request("GET", "api/homework/list", data, true, callback);
     };
 
     this.upload = function (homeworkId, file, callback) {
-        // http://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax
         var data = new FormData();
         data.append("homeworkId", homeworkId);
         data.append("file", file);
@@ -22,9 +22,11 @@ function HomeworkAPI(api) {
         api.request("POST", "api/homework/upload", data, true, callback);
     };
 
-    this.download = function (callback) {
-        var data;
-        api.request("POST", "api/homework/download", data, true, callback);
+    this.download = function (homeworkId, errorCallback) {
+        api.downloadFile("api/homework/download", {
+            token: api.accessToken,
+            homeworkId: homeworkId
+        }, errorCallback)
     };
 
     return {
