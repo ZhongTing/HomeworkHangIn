@@ -132,9 +132,9 @@ function turnToTAPage() {
     initTAMainPage();
 }
 
-function turnToCorrectHomeworkPage(hwid) {
+function turnToCorrectHomeworkPage(hwid, hwname) {
     PageTransitions.nextPage($correctHwPage);
-    initCorrectHwPage(hwid);
+    initCorrectHwPage(hwid, hwname);
 }
 
 function turnToUploadHomeworkPage(hwid) {
