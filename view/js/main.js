@@ -118,13 +118,17 @@ function turnToMainPage(name) {
     if (currentUser.isTa()) {
         turnToTAPage(name);
     } else {
-        turnToStudentPage();
+        turnToStudentPage(name);
     }
 }
 
-function turnToStudentPage() {
+function turnToStudentPage(name) {
     PageTransitions.nextPage($studentMainPage);
-    initTAMainPage();
+    initToStudentPage(name);
+}
+
+function initToStudentPage(name) {
+    $("#welcome-student-message").text("Welcome back, " + name);
 }
 
 function turnToTAPage(name) {
@@ -143,7 +147,7 @@ function turnToUploadHomeworkPage(hwid, hwname) {
 };
 
 function initTAMainPage(name) {
-    $("#welcome-message").text("Welcome back, " + name);
+    $("#welcome-ta-message").text("Welcome back, " + name);
     initAssignPage();
 }
 
