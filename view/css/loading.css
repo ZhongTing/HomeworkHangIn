@@ -34,11 +34,14 @@
     -webkit-animation: loading 1.5s infinite;
     -webkit-animation-delay: 250ms;
     -webkit-transform: scale(0.6);
-    @include box-sizing(border-box);
     -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -ms-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
+    -webkit-transition-delay: 500ms;
+    transition-delay: 500 ms;
+    -moz-transition-delay: 500ms;
+    -o-transition-delay: 500ms;
     opacity: 1;
 }
 
