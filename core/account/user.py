@@ -13,6 +13,10 @@ class User():
         return True
 
     @property
+    def name(self):
+        return self.name
+
+    @property
     def account(self):
         return self._user.account
 
