@@ -178,7 +178,7 @@ function initHomeworkMenu(homeworkList) {
 }
 
 function initAssignPage() {
-    $("#assign-btn").on('click', function () {
+    $("#assign-btn").off().on('click', function () {
         var year = $("#assign-hw-year").val();
         var name = $("#assign-hw-name").val();
         var score = $("#assign-hw-score").val();
