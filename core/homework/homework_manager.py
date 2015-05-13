@@ -1,7 +1,11 @@
+import zipfile
+
+from os.path import basename
+
 from app.settings import HOMEWORK_UPLOAD_FOLDER
 from core.homework.homework import Homework
 from core.models import HomeworkModel
-from core.utility.error_exceptions import NotFoundError, DuplicateError, ParameterError
+from core.utility.error_exceptions import NotFoundError, DuplicateError, ParameterError, AuthorizationError
 from django.db import IntegrityError
 from django.http import HttpResponse
 import os
@@ -43,7 +47,13 @@ class HomeworkManager():
         save_file.close()
 
     def download_homework(self, homework_id, user):
-        file_path = self._get_homework_file_path(homework_id, user)
+        if user.is_student:
+            file_path = self._get_homework_file_path(homework_id, user)
+        elif user.is_ta:
+            file_path = self._get_homework_zip_file_path(homework_id)
+        else:
+            raise AuthorizationError()
+
         if not os.path.isfile(file_path):
             raise NotFoundError()
 
@@ -55,26 +65,45 @@ class HomeworkManager():
                     chunks.append(chunk)
                 else:
                     break
+
         response = HttpResponse(b''.join(chunks), content_type='application/zip')
-        response['Content-Disposition'] = 'attachment; filename="%s.zip"' % user.student_id
+        response['Content-Disposition'] = 'attachment; filename="%s"' % basename(file_path)
 
         return response
 
+    def _get_homework_zip_file_path(self, homework_id):
+        folder_path = self._get_homework_file_folder(homework_id)
+        zip_filename = "temp/all_%s_hw.zip" % str(homework_id)
+
+        temp_zip = zipfile.ZipFile(zip_filename, 'w')
+        for root, dirs, files in os.walk(folder_path):
+            for f in files:
+                path = os.path.join(root, f)
+                temp_zip.write(path, basename(path))
+        temp_zip.close()
+
+        return zip_filename
+
     def _get_homework_file_path(self, homework_id, user):
+        student_id = str(user.student_id)
+        folder_path = self._get_homework_file_folder(homework_id)
+        file_path = "%s/%s.zip" % (folder_path, student_id)
+
+        return file_path
+
+    def _get_homework_file_folder(self, homework_id):
         if homework_id not in self.__homework_cache:
             raise ParameterError()
 
         homework = self.__homework_cache[homework_id]
-        student_id = str(user.student_id)
         year = str(homework.year)
         homework_id = str(homework.homework_id)
-        file_path = "%s/%s/%s/%s.zip" % (HOMEWORK_UPLOAD_FOLDER, year, homework_id, student_id)
+        folder_path = "%s/%s/%s" % (HOMEWORK_UPLOAD_FOLDER, year, homework_id)
 
-        directory = os.path.dirname(file_path)
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
 
-        return file_path
+        return folder_path
 
 
 homework_manager = HomeworkManager()

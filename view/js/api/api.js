@@ -16,6 +16,7 @@ var API = new(function () {
             },
             data: data,
             success: function (data) {
+                console.log(action, ":success");
                 if (typeof (data) == "object")
                     console.log(action, "=>", data);
                 else if (typeof (data) == "string" && data.length < 100)
@@ -27,6 +28,7 @@ var API = new(function () {
                     callback(true, data);
             },
             error: function (data) {
+                console.log(action, ":fail");
                 if (callback)
                     callback(false, data.responseText);
             }
