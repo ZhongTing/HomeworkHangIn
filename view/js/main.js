@@ -81,8 +81,8 @@ function initLoginPage() {
             }
         } else {
             $loginBtn.addClass('loading');
-            // API.user.login(account, password, function (success, data) {
-            API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
+            API.user.login(account, password, function (success, data) {
+                // API.user.login("sdtlab@gmail.com", "test", function (success, data) {
                 $loginBtn.removeClass('loading');
                 if (success) {
                     currentUser.init(data);
@@ -129,7 +129,7 @@ function turnToUploadHomeworkPage(hwid) {
 };
 
 function initTAMainPage() {
-
+    initAssignPage();
 }
 
 function initHomeworkMenu(homeworkList) {
@@ -159,6 +159,23 @@ function initHomeworkMenu(homeworkList) {
             turnToUploadHomeworkPage(this.dataset['hwid'], this.dataset['hwname']);
         }
     })
+}
+
+function initAssignPage() {
+    $("#assign-btn").on('click', function () {
+        var year = $("#assign-hw-year").val();
+        var name = $("#assign-hw-name").val();
+        var score = $("#assign-hw-score").val();
+        API.homework.create(year, name, score, function (success, data) {
+            alert('success');
+            PageTransitions.back();
+            API.homework.list(function (success, data) {
+                if (success) {
+                    initHomeworkMenu(data.list)
+                }
+            });
+        });
+    });
 }
 
 function initCorrectHwPage(hwid, hwname) {
