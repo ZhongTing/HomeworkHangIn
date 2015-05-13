@@ -199,7 +199,7 @@ function initCorrectHwPage(hwid, hwname) {
 
 function initUploadHwPage(hwid, hwname) {
     $("#upload-hw-name").text(hwname);
-    $("#upload-hw").on('click', function () {
+    $("#upload-hw").off().on('click', function () {
         var file = $("#homework-file-input")[0].files[0];
         API.homework.upload(hwid, file, function (success, data) {
             alert('success');
