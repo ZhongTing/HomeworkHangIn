@@ -1,5 +1,5 @@
 var systemSetting = {
-    offlineDemo: true,
+    offlineDemo: false,
     quicklogin: true
 };
 
@@ -81,7 +81,7 @@ function initLoginPage() {
             }
         } else {
             $loginBtn.addClass('loading');
-            API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
+            API.user.login(account, password, function (success, data) {
                 $loginBtn.removeClass('loading');
                 if (success) {
                     //alert("hello ~ " + data["account"]);
