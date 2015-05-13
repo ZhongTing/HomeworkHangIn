@@ -81,10 +81,10 @@ function initLoginPage() {
             }
         } else {
             $loginBtn.addClass('loading');
-            API.user.login(account, password, function (success, data) {
+            // API.user.login(account, password, function (success, data) {
+            API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
                 $loginBtn.removeClass('loading');
                 if (success) {
-                    //alert("hello ~ " + data["account"]);
                     currentUser.init(data);
                     API.homework.list(function (success, data) {
                         if (success) {
@@ -138,7 +138,7 @@ function initHomeworkMenu(homeworkList) {
     if (homeworkList.length != 0) {
         for (var i = homeworkList.length - 1; i >= 0; i--) {
             var hw = homeworkList[i];
-            html = '<li data-hwid=' + hw.name + '><a href="#">' + hw.name + '</a></li>' + html;
+            html = '<li data-hwid=' + hw.id + ' data-hwname=' + hw.name + '><a href="#">' + hw.name + '</a></li>' + html;
             if (i % count == 0 && i != 0) {
                 html = '<li><a href="#">next</a><ul class="dl-submenu">' + html + '</ul></li>';
             }
@@ -154,19 +154,26 @@ function initHomeworkMenu(homeworkList) {
     });
     $(".homework-menu li[data-hwid]").on('click', function () {
         if (currentUser.isTa()) {
-            turnToCorrectHomeworkPage(this.dataset['hwid']);
+            turnToCorrectHomeworkPage(this.dataset['hwid'], this.dataset['hwname']);
         } else {
-            turnToUploadHomeworkPage(this.dataset['hwid']);
+            turnToUploadHomeworkPage(this.dataset['hwid'], this.dataset['hwname']);
         }
     })
 }
 
-function initCorrectHwPage(hwid) {
-    $("#correct-hw-name").text(hwid);
+function initCorrectHwPage(hwid, hwname) {
+    $("#correct-hw-name").text(hwname);
 }
 
-function initUploadHwPage(hwid) {
-    $("#upload-hw-name").text(hwid);
+function initUploadHwPage(hwid, hwname) {
+    $("#upload-hw-name").text(hwname);
+    $("#upload-hw").on('click', function () {
+        var file = $("#homework-file-input")[0].files[0];
+        API.homework.upload(hwid, file, function (success, data) {
+            alert('success');
+            PageTransitions.back();
+        })
+    })
 }
 
 $('.back').each(function () {
