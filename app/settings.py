@@ -96,3 +96,7 @@ STATIC_URL = '/view/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'view')
 
 HOMEWORK_UPLOAD_FOLDER = BASE_DIR + '/homework'
+
+TEMP_ZIP_FOLDER = BASE_DIR + '/temp'
+if not os.path.exists(TEMP_ZIP_FOLDER):
+    os.makedirs(TEMP_ZIP_FOLDER)

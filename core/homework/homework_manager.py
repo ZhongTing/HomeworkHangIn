@@ -1,7 +1,6 @@
 import zipfile
 
 from os.path import basename
-
 from app.settings import HOMEWORK_UPLOAD_FOLDER
 from core.homework.homework import Homework
 from core.models import HomeworkModel
