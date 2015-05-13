@@ -18,7 +18,8 @@ class UserModel(models.Model):
 
     role = enum.EnumField(UserType, default=UserType.STUDENT)
 
-    account = models.CharField(max_length=50, blank=False, unique=False)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    account = models.CharField(max_length=50, blank=False, null=False, unique=False)
     password = models.CharField(max_length=100, blank=False)
 
     class Meta:

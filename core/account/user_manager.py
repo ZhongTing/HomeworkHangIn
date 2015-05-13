@@ -36,6 +36,7 @@ class UserManager():
 
             return {
                 "accessToken": user_model.access_token,
+                "name": user_model.name,
                 "account": user_model.account,
                 "role": UserType.labels[user_model.role],
             }
@@ -54,5 +55,6 @@ class UserManager():
     @staticmethod
     def _encrypt_password(password):
         return hashlib.sha224(password).hexdigest()
+
 
 user_manager = UserManager()
