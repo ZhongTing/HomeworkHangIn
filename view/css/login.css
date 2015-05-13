@@ -1,11 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-weight: 300;
-}
-
 .bg-bubbles {
     position: absolute;
     top: 0;
@@ -22,7 +15,7 @@
     width: 40px;
     height: 40px;
     background-color: rgba(255, 255, 255, 0.15);
-    bottom: -160px;
+    bottom: 90px;
     -webkit-animation: square 25s infinite;
     animation: square 25s infinite;
     -webkit-transition-timing-function: linear;
@@ -114,8 +107,8 @@
         transform: translateY(0);
     }
     100% {
-        -webkit-transform: translateY(-700px) rotate(600deg);
-        transform: translateY(-700px) rotate(600deg);
+        -webkit-transform: translateY(-800px) rotate(600deg);
+        transform: translateY(-800px) rotate(600deg);
     }
 }
 
@@ -125,7 +118,7 @@
         transform: translateY(0);
     }
     100% {
-        -webkit-transform: translateY(-700px) rotate(600deg);
-        transform: translateY(-700px) rotate(600deg);
+        -webkit-transform: translateY(-800px) rotate(600deg);
+        transform: translateY(-800px) rotate(600deg);
     }
 }
