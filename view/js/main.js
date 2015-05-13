@@ -195,6 +195,11 @@ function initAssignPage() {
 
 function initCorrectHwPage(hwid, hwname) {
     $("#correct-hw-name").text(hwname);
+    $("#download-hw").on('click', function () {
+        API.homework.download(hwid, function () {
+            alert("something wrong!");
+        });
+    });
 }
 
 function initUploadHwPage(hwid, hwname) {
