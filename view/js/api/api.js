@@ -1,6 +1,6 @@
-var API = new (function () {
+var API = new(function () {
     var api = this;
-    this.serverURL = "./";
+    this.serverURL = "http://140.124.181.195:9000/HomeworkHangIn/";
     this.accessToken = "";
 
     this.request = function (type, action, data, needAccessToken, callback) {
@@ -16,9 +16,10 @@ var API = new (function () {
             },
             data: data,
             success: function (data) {
-                if (typeof(data) == "object")
+                console.log(action, ":success");
+                if (typeof (data) == "object")
                     console.log(action, "=>", data);
-                else if (typeof(data) == "string" && data.length < 100)
+                else if (typeof (data) == "string" && data.length < 100)
                     console.log(action, "=>", data);
                 else
                     console.log(action, "=>", "response done");
@@ -27,6 +28,7 @@ var API = new (function () {
                     callback(true, data);
             },
             error: function (data) {
+                console.log(action, ":fail");
                 if (callback)
                     callback(false, data.responseText);
             }

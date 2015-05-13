@@ -13,8 +13,6 @@ def download(request):
 
         # header
         user = user_manager.get_user_from_token(request.get_param("token"))
-        if not user.is_student:
-            raise AuthorizationError()
 
         # GET data
         data = {
