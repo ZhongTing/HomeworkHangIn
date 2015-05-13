@@ -137,9 +137,9 @@ function turnToCorrectHomeworkPage(hwid, hwname) {
     initCorrectHwPage(hwid, hwname);
 }
 
-function turnToUploadHomeworkPage(hwid) {
+function turnToUploadHomeworkPage(hwid, hwname) {
     PageTransitions.nextPage($uploadHwPage);
-    initUploadHwPage(hwid);
+    initUploadHwPage(hwid, hwname);
 };
 
 function initTAMainPage() {
