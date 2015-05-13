@@ -132,9 +132,9 @@ function turnToTAPage() {
     initTAMainPage();
 }
 
-function turnToCorrectHomeworkPage(hwid) {
+function turnToCorrectHomeworkPage(hwid, hwname) {
     PageTransitions.nextPage($correctHwPage);
-    initCorrectHwPage(hwid);
+    initCorrectHwPage(hwid, hwname);
 }
 
 function turnToUploadHomeworkPage(hwid) {
@@ -194,6 +194,11 @@ function initAssignPage() {
 
 function initCorrectHwPage(hwid, hwname) {
     $("#correct-hw-name").text(hwname);
+    $("#download-hw").on('click', function () {
+        API.homework.download(hwid, function () {
+            alert("something wrong!");
+        });
+    });
 }
 
 function initUploadHwPage(hwid, hwname) {
