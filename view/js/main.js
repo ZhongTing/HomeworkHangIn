@@ -90,7 +90,7 @@ function initLoginPage() {
                             initHomeworkMenu(data.list)
                         }
                     });
-                    turnToMainPage();
+                    turnToMainPage(data.name);
                 } else {
                     alert("account or password error!!");
                 }
@@ -114,9 +114,9 @@ function initLoginPage() {
     })
 }
 
-function turnToMainPage() {
+function turnToMainPage(name) {
     if (currentUser.isTa()) {
-        turnToTAPage();
+        turnToTAPage(name);
     } else {
         turnToStudentPage();
     }
@@ -127,9 +127,9 @@ function turnToStudentPage() {
     initTAMainPage();
 }
 
-function turnToTAPage() {
+function turnToTAPage(name) {
     PageTransitions.nextPage($taMainPage);
-    initTAMainPage();
+    initTAMainPage(name);
 }
 
 function turnToCorrectHomeworkPage(hwid, hwname) {
@@ -142,7 +142,8 @@ function turnToUploadHomeworkPage(hwid, hwname) {
     initUploadHwPage(hwid, hwname);
 };
 
-function initTAMainPage() {
+function initTAMainPage(name) {
+    $("#welcome-message").text("Welcome back, " + name);
     initAssignPage();
 }
 
