@@ -74,7 +74,9 @@ function initLoginPage() {
             if (systemSetting.quicklogin) {
                 turnToMainPage();
             } else {
+                $loginBtn.addClass('loading');
                 setTimeout(function () {
+                    $loginBtn.removeClass('loading');
                     turnToMainPage();
                 }, 2000);
             }
