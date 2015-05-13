@@ -17,6 +17,7 @@ function init() {
         initMockData();
     }
     initLoginPage();
+
     // API.user.login("t103598011@ntut.edu.tw", "test", function (success, data) {
     //     if (success) {
     //         //alert("hello ~ " + data["account"]);
@@ -61,9 +62,7 @@ function initMockData() {
 }
 
 function initLoginPage() {
-    $loginBtn = $('#login-btn');
-    $loginBtn.on('click', function (event) {
-        event.preventDefault();
+    var doLogin = function () {
         var account = $("#account").val();
         var password = $("#password").val();
         if (isOfflineDemo()) {
@@ -97,6 +96,21 @@ function initLoginPage() {
                 }
             });
         }
+    }
+    $("#account").keyup(function (event) {
+        if (event.keyCode == 13) {
+            doLogin();
+        }
+    });
+    $("#password").keyup(function (event) {
+        if (event.keyCode == 13) {
+            doLogin();
+        }
+    });
+    $loginBtn = $('#login-btn');
+    $loginBtn.on('click', function (event) {
+        event.preventDefault();
+        doLogin();
     })
 }
 
@@ -149,7 +163,8 @@ function initHomeworkMenu(homeworkList) {
     $(".homework-menu ul.dl-menu").html(html);
     $('.homework-menu').removeData('dlmenu');
     $('.homework-menu').dlmenu({
-        animationClasses: { in : 'dl-animate-in-4', out: 'dl-animate-out-4'
+        animationClasses: {
+            in: 'dl-animate-in-4', out: 'dl-animate-out-4'
         }
     });
     $(".homework-menu li[data-hwid]").on('click', function () {
