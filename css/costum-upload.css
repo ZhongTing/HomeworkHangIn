@@ -1,0 +1,35 @@
+@import url("http://fonts.googleapis.com/css?family=Lato");
+.custom-file-upload-hidden {
+    display: none;
+    visibility: hidden;
+    position: relative;
+    left: -9999px;
+}
+
+.custom-file-upload {
+    display: block;
+    font-size: 16px;
+}
+
+.custom-file-upload label {
+    display: block;
+}
+
+.file-upload-wrapper {
+    position: relative;
+}
+
+.file-upload-input {
+    width: 170px;
+    display: table-cell;
+}
+
+.file-upload-input:hover,
+.file-upload-input:focus {
+    outline: none;
+}
+
+.file-upload-button {
+    width: 82px;
+    margin-left: -2px;
+}
